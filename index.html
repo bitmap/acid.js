@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Distort Example</title>
+    <style media="screen">
+    body {
+      display: block;
+      filter: url( "#distort");
+    }
+
+    #dismap {
+      visibility: hidden;
+      width: 0;
+      height: 0;
+    }
+
+    .distort-test {
+      background-image: url('src/assets/surf.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      width: 100vw;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    </style>
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="dismap">
+      <defs>
+        <filter id="distort">
+          <feTurbulence baseFrequency="0.002" numOctaves="5" result="fractalNoise" seed="0"/>
+          <feDisplacementMap id="displacement" in="SourceGraphic" in2="noise" scale="1" />
+        </filter>
+      </defs>
+    </svg>
+    <div class="distort-test">
+
+    </div>
+    <script src="bundle.js"></script>
+  </body>
+</html>
